@@ -5,9 +5,9 @@ class Node {
     }
 }
 class Stack {
-	constructor(value) {
+    constructor(value) {
         this.top = new Node(value);
-        this.lenght = 1;
+        this.length = 1;
     }
 
     printStack() {
