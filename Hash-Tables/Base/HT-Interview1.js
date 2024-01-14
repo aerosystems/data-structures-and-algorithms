@@ -1,10 +1,12 @@
 function itemInCommonPowerTwo(arr1, arr2) {
+    let tempObj = {};
     for (let i = 0; i < arr1.length; i++) {
-        for (let j = 0; j < arr2.length; j++) {
-            if (arr1[i] === arr2[j]) return true
-        }
+        tempObj[arr1[i]] = true;
     }
-    return false
+    for (let j = 0; j < arr2.length; j++) {
+        if (tempObj[arr2[j]]) return true;
+    }
+    return false;
 }
 
 function itemInCommonLinear(arr1, arr2) {
