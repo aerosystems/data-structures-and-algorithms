@@ -16,19 +16,18 @@
 //   +======================================================+
 
 function findDuplicates(arr) {
-    let dupObj = {};
+    const dupMap = new Map();
     for (const item of arr) {
-        if (!dupObj[item]) {
-            dupObj[item] = true;
-        }
+        dupMap.set(item, (dupMap.get(item) || 0) + 1);
     }
-    let duplicates = [];
-    for (const item in dupObj){
-        duplicates.push(item);
+    const duplicates = [];
+    for (let [key, value] of dupMap.entries()) {
+        if (value > 1) {
+            duplicates.push(key);
+        }
     }
     return duplicates;
 }
-
 
 
 // ---------------
