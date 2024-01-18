@@ -20,20 +20,40 @@
 
 
 function twoSumObjImpl(arr, target) {
-    let res = [];
-    let temp = {};
+    let tempObj = {};
     for (let i = 0; i < arr.length; i++) {
-        temp[i] = target - arr[i];
-    }
-    for (let j = 0; j < arr.length; j++) {
-        if (temp[j] === arr[j]) {
-            return []
+        if (!tempObj[target - arr[i]]) {
+            tempObj[target - arr[i]] = i;
         }
     }
-    return res;
+    for (let j = 0; j < arr.length; j++) {
+        if (tempObj[arr[j]]) {
+            return [j, tempObj[arr[j]]];
+        }
+    }
+    return [];
 }
 
-twoSum =twoSumObjImpl;
+function twoSumMapImpl(arr, target) {
+    let tempMap = new Map();
+    for (let i = 0; i < arr.length; i++) {
+        if (!tempMap.has(target - arr[i])){
+            tempMap.set(target - arr[i], i);
+        } else {
+            if (target - arr[i] === arr[i]) {
+                return [tempMap.get(target - arr[i]), i];
+            }
+        }
+    }
+    for (let j = 0; j < arr.length; j++) {
+        if (tempMap.has(arr[j])) {
+            return [j, tempMap.get(arr[j])];
+        }
+    }
+    return [];
+}
+
+twoSum = twoSumMapImpl;
 
 // ---------------
 // Unique Solution
@@ -73,6 +93,15 @@ console.log("---------------");
 console.log("Empty Array:");
 console.log("Input: [], Target: 0");
 console.log("Output: ", JSON.stringify(twoSum([], 0)));
+console.log("---------------");
+
+
+// ---------------
+// Same Elements Solution
+// ---------------
+console.log("Same Elements Solution:");
+console.log("Input: [1, 1, 1, 1], Target: 2");
+console.log("Output: ", JSON.stringify(twoSum([1, 1, 1, 1], 2)));
 console.log("---------------");
 
 
