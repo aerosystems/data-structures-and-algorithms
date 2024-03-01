@@ -3,7 +3,6 @@ function insertionSort(arr) {
         let j;
         let temp = arr[i];
         for (j = i - 1; arr[j] > temp && j >= 0; j--) {
-            console.log(i, j);
             arr[j + 1] = arr[j];
         }
         arr[j + 1] = temp;
