@@ -17,10 +17,19 @@ function pivot(array, pivotIndex = 0, endIndex = array.length - 1) {
     return swapIndex;
 }
 
+function quickSort(arr, left = 0, right = arr.length - 1) {
+    if (left < right) {
+        let pivotIndex = pivot(arr, left, right);
+        quickSort(arr, left, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, right);
+    }
+    return arr;
+}
+
 
 function test() {
     let myArray = [4, 6, 1, 7, 3, 2, 5];
-    pivot(myArray);
+    quickSort(myArray);
     console.log(myArray);
 }
 
@@ -31,6 +40,6 @@ test();
 /*
     EXPECTED OUTPUT:
     ----------------
-    [ 2, 1, 3, 4, 6, 7, 5 ]
+    [ 1, 2, 3, 4, 5, 6 ]
 
 */  
